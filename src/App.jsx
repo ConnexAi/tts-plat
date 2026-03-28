@@ -8,6 +8,7 @@ import Eventos from './pages/Eventos'
 import Inventario from './pages/Inventario'
 import Asistencia from './pages/Asistencia'
 import Evidencias from './pages/Evidencias'
+import Informe from './pages/Informe'
 
 export default function App() {
   return (
@@ -58,6 +59,15 @@ export default function App() {
             element={
               <RutaProtegida>
                 <Evidencias />
+              </RutaProtegida>
+            }
+          />
+
+          <Route
+            path="/informe/:eventoId"
+            element={
+              <RutaProtegida>
+                <Informe />
               </RutaProtegida>
             }
           />

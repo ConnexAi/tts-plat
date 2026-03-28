@@ -7,6 +7,7 @@ const TIPOS_EVENTO = ['corporativo', 'institucional', 'comunitario', 'masivo']
 const CAMPOS_VACIOS = {
   nombre: '',
   fecha: '',
+  fecha_fin: '',
   lugar: '',
   tipo_evento: '',
   descripcion: '',
@@ -25,6 +26,7 @@ export default function FormularioEvento({ evento, onGuardar, onCerrar }) {
       setCampos({
         nombre: evento.nombre,
         fecha: evento.fecha,
+        fecha_fin: evento.fecha_fin ?? '',
         lugar: evento.lugar,
         tipo_evento: evento.tipo_evento,
         descripcion: evento.descripcion ?? '',
@@ -43,10 +45,15 @@ export default function FormularioEvento({ evento, onGuardar, onCerrar }) {
     e.preventDefault()
     setError('')
 
-    const { nombre, fecha, lugar, tipo_evento, aforo_estimado } = campos
+    const { nombre, fecha, fecha_fin, lugar, tipo_evento, aforo_estimado } = campos
 
     if (!nombre.trim() || !fecha || !lugar.trim() || !tipo_evento) {
       setError('Completa todos los campos obligatorios.')
+      return
+    }
+
+    if (fecha_fin && fecha_fin < fecha) {
+      setError('La fecha de fin no puede ser anterior a la fecha de inicio.')
       return
     }
 
@@ -60,6 +67,7 @@ export default function FormularioEvento({ evento, onGuardar, onCerrar }) {
     const resultado = await onGuardar({
       nombre: nombre.trim(),
       fecha,
+      fecha_fin: fecha_fin || null,
       lugar: lugar.trim(),
       tipo_evento,
       descripcion: campos.descripcion.trim() || null,
@@ -111,9 +119,9 @@ export default function FormularioEvento({ evento, onGuardar, onCerrar }) {
             />
           </Campo>
 
-          {/* Fecha y aforo — fila */}
+          {/* Fechas — inicio y fin opcional */}
           <div className="grid grid-cols-2 gap-3">
-            <Campo label="Fecha *">
+            <Campo label="Fecha inicio *">
               <input
                 type="date"
                 value={campos.fecha}
@@ -122,18 +130,30 @@ export default function FormularioEvento({ evento, onGuardar, onCerrar }) {
                 disabled={guardando}
               />
             </Campo>
-            <Campo label="Aforo estimado *">
+            <Campo label="Fecha fin">
               <input
-                type="number"
-                value={campos.aforo_estimado}
-                onChange={(e) => actualizar('aforo_estimado', e.target.value)}
-                placeholder="500"
-                min="1"
+                type="date"
+                value={campos.fecha_fin}
+                min={campos.fecha || undefined}
+                onChange={(e) => actualizar('fecha_fin', e.target.value)}
                 className={estiloInput}
                 disabled={guardando}
               />
             </Campo>
           </div>
+
+          {/* Aforo */}
+          <Campo label="Aforo estimado *">
+            <input
+              type="number"
+              value={campos.aforo_estimado}
+              onChange={(e) => actualizar('aforo_estimado', e.target.value)}
+              placeholder="500"
+              min="1"
+              className={estiloInput}
+              disabled={guardando}
+            />
+          </Campo>
 
           {/* Lugar */}
           <Campo label="Lugar *">
