@@ -172,7 +172,7 @@ function StatCard({ valor, etiqueta, color, vacio }) {
 
   return (
     <div className={`rounded-2xl border px-4 py-3.5 ${c.bg}`}>
-      <p className={`text-2xl font-bold ${vacio ? 'text-gray-300' : c.num}`}>{valor}</p>
+      <p className={`text-xl sm:text-2xl font-bold ${vacio ? 'text-gray-300' : c.num}`}>{valor}</p>
       <p className="text-xs text-gray-400 mt-0.5 leading-snug">{etiqueta}</p>
     </div>
   )

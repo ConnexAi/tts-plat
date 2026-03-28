@@ -87,7 +87,7 @@ export default function FormularioEvento({ evento, onGuardar, onCerrar }) {
       className="fixed inset-0 z-50 flex items-center justify-center bg-black/40 px-4"
       onClick={(e) => e.target === e.currentTarget && onCerrar()}
     >
-      <div className="bg-white rounded-2xl shadow-xl w-full max-w-md p-7 relative max-h-[90vh] overflow-y-auto">
+      <div className="bg-white rounded-2xl shadow-xl w-full max-w-md p-5 sm:p-7 relative max-h-[90vh] overflow-y-auto">
 
         {/* Encabezado */}
         <div className="flex items-center justify-between mb-6">

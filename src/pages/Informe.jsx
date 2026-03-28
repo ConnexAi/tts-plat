@@ -107,11 +107,11 @@ export default function Informe() {
           {!cargando && !error && evento && (
             <div
               id="informe"
-              className="bg-white rounded-2xl shadow-sm border border-gray-100 p-10 space-y-8 text-gray-900"
+              className="bg-white rounded-2xl shadow-sm border border-gray-100 p-5 sm:p-10 space-y-8 text-gray-900"
             >
 
               {/* ── 1. ENCABEZADO ── */}
-              <div className="informe-seccion flex items-start justify-between border-b border-gray-100 pb-7">
+              <div className="informe-seccion flex items-start justify-between gap-4 flex-wrap border-b border-gray-100 pb-7">
                 <div>
                   <p className="text-xs font-semibold text-gray-400 uppercase tracking-widest mb-2">
                     Informe consolidado de evento

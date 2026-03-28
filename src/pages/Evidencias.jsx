@@ -374,7 +374,7 @@ function TarjetaFoto({ foto, onClick, onEliminar }) {
       {/* Botón eliminar — visible en hover */}
       <button
         onClick={(e) => { e.stopPropagation(); onEliminar() }}
-        className="absolute top-2 right-2 p-1.5 bg-white/90 text-gray-600 hover:bg-red-50 hover:text-red-500 rounded-lg opacity-0 group-hover:opacity-100 transition-all shadow-sm"
+        className="absolute top-2 right-2 p-1.5 bg-white/90 text-gray-600 hover:bg-red-50 hover:text-red-500 rounded-lg opacity-100 sm:opacity-0 sm:group-hover:opacity-100 transition-all shadow-sm"
         title="Eliminar foto"
       >
         <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
@@ -442,7 +442,7 @@ function Lightbox({ foto, indice, total, onCerrar, onAnterior, onSiguiente, onEl
 
       {/* Imagen central */}
       <div
-        className="flex-1 flex items-center justify-center px-16 min-h-0"
+        className="flex-1 flex items-center justify-center px-4 sm:px-16 min-h-0"
         onClick={(e) => e.stopPropagation()}
       >
         <img

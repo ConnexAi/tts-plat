@@ -54,7 +54,7 @@ export default function Eventos() {
       <div className="max-w-5xl mx-auto px-6 py-10">
 
         {/* Encabezado de la sección */}
-        <div className="flex items-center justify-between mb-8">
+        <div className="flex items-center justify-between gap-3 flex-wrap mb-8">
           <div>
             <h1 className="text-xl font-semibold text-gray-900">Eventos</h1>
             <p className="text-sm text-gray-400 mt-0.5">

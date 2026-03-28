@@ -248,7 +248,7 @@ function FilaItem({ item, onEditar, onEliminar }) {
 
       {/* Acciones */}
       <td className="px-4 py-4">
-        <div className="flex items-center justify-end gap-1 opacity-0 group-hover:opacity-100 transition-opacity">
+        <div className="flex items-center justify-end gap-1 sm:opacity-0 sm:group-hover:opacity-100 transition-opacity">
           <button
             onClick={onEditar}
             className="p-1.5 text-gray-400 hover:text-gray-700 hover:bg-gray-100 rounded-lg transition-colors"
