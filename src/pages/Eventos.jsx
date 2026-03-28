@@ -1,5 +1,6 @@
 // Módulo de gestión de eventos — lista, crear, editar, cambiar estado
 import { useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 import Layout from '../components/Layout'
 import FormularioEvento from '../components/FormularioEvento'
 import { useEventos } from '../hooks/useEventos'
@@ -134,6 +135,7 @@ export default function Eventos() {
 
 // Tarjeta individual de evento
 function TarjetaEvento({ evento, cambiandoEstado, onEditar, onToggleEstado, onEliminar }) {
+  const navegar = useNavigate()
   const esActivo = evento.estado === 'activo'
 
   // Formatear fecha en español
@@ -174,19 +176,25 @@ function TarjetaEvento({ evento, cambiandoEstado, onEditar, onToggleEstado, onEl
         )}
       </div>
 
-      {/* Acciones */}
+      {/* Acciones — fila 1: inventario + cambiar estado */}
       <div className="flex gap-2 pt-1 border-t border-gray-50">
+        {/* Ver inventario */}
+        <button
+          onClick={() => navegar(`/inventario/${evento.id}`)}
+          className="flex-1 flex items-center justify-center gap-1.5 py-1.5 text-xs font-medium text-gray-700 bg-gray-50 hover:bg-gray-100 rounded-lg transition-colors"
+        >
+          <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+            <path strokeLinecap="round" strokeLinejoin="round" d="M20.25 7.5l-.625 10.632a2.25 2.25 0 01-2.247 2.118H6.622a2.25 2.25 0 01-2.247-2.118L3.75 7.5M10 11.25h4M3.375 7.5h17.25c.621 0 1.125-.504 1.125-1.125v-1.5c0-.621-.504-1.125-1.125-1.125H3.375c-.621 0-1.125.504-1.125 1.125v1.5c0 .621.504 1.125 1.125 1.125z" />
+          </svg>
+          Inventario
+        </button>
         {/* Cambiar estado */}
         <button
           onClick={onToggleEstado}
           disabled={cambiandoEstado}
           className="flex-1 py-1.5 text-xs font-medium text-gray-600 bg-gray-50 hover:bg-gray-100 rounded-lg transition-colors disabled:opacity-50"
         >
-          {cambiandoEstado
-            ? '…'
-            : esActivo
-            ? 'Cerrar evento'
-            : 'Reactivar'}
+          {cambiandoEstado ? '…' : esActivo ? 'Cerrar' : 'Reactivar'}
         </button>
         {/* Editar */}
         <button

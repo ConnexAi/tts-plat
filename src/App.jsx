@@ -5,6 +5,7 @@ import RutaProtegida from './components/RutaProtegida'
 import Login from './pages/Login'
 import Dashboard from './pages/Dashboard'
 import Eventos from './pages/Eventos'
+import Inventario from './pages/Inventario'
 
 export default function App() {
   return (
@@ -28,6 +29,15 @@ export default function App() {
             element={
               <RutaProtegida>
                 <Eventos />
+              </RutaProtegida>
+            }
+          />
+
+          <Route
+            path="/inventario/:eventoId"
+            element={
+              <RutaProtegida>
+                <Inventario />
               </RutaProtegida>
             }
           />
