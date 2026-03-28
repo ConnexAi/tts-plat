@@ -7,6 +7,7 @@ import Dashboard from './pages/Dashboard'
 import Eventos from './pages/Eventos'
 import Inventario from './pages/Inventario'
 import Asistencia from './pages/Asistencia'
+import Evidencias from './pages/Evidencias'
 
 export default function App() {
   return (
@@ -48,6 +49,15 @@ export default function App() {
             element={
               <RutaProtegida>
                 <Asistencia />
+              </RutaProtegida>
+            }
+          />
+
+          <Route
+            path="/evidencias/:eventoId"
+            element={
+              <RutaProtegida>
+                <Evidencias />
               </RutaProtegida>
             }
           />
