@@ -6,6 +6,7 @@ import Login from './pages/Login'
 import Dashboard from './pages/Dashboard'
 import Eventos from './pages/Eventos'
 import Inventario from './pages/Inventario'
+import Asistencia from './pages/Asistencia'
 
 export default function App() {
   return (
@@ -38,6 +39,15 @@ export default function App() {
             element={
               <RutaProtegida>
                 <Inventario />
+              </RutaProtegida>
+            }
+          />
+
+          <Route
+            path="/asistencia/:eventoId"
+            element={
+              <RutaProtegida>
+                <Asistencia />
               </RutaProtegida>
             }
           />
