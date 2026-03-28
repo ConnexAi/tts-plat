@@ -6,8 +6,7 @@ Cali, Colombia
 Contacto: info@magikenter.com
 
 ## Descripción
-Plataforma web para gestión integral de eventos logísticos
-de la Secretaría de Salud Distrital de Cali.
+Plataforma web para gestión integral de eventos logísticos y corporativos.
 
 ## Stack
 - React + Vite

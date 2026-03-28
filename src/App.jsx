@@ -4,6 +4,7 @@ import { AuthProvider } from './context/AuthContext'
 import RutaProtegida from './components/RutaProtegida'
 import Login from './pages/Login'
 import Dashboard from './pages/Dashboard'
+import Eventos from './pages/Eventos'
 
 export default function App() {
   return (
@@ -22,8 +23,16 @@ export default function App() {
               </RutaProtegida>
             }
           />
+          <Route
+            path="/eventos"
+            element={
+              <RutaProtegida>
+                <Eventos />
+              </RutaProtegida>
+            }
+          />
 
-          {/* Cualquier ruta desconocida redirige al inicio */}
+          {/* Ruta desconocida → inicio */}
           <Route path="*" element={<Navigate to="/" replace />} />
         </Routes>
       </AuthProvider>
